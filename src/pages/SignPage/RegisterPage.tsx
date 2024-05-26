@@ -3,7 +3,7 @@ import { Box, FormControl, Input, Button, Text, Link } from "@chakra-ui/react";
 
 export default function SignPage() {
   return (
-    <Box width={"100vw"} height={"100vh"} bg="#2C3A47" display={"flex"}>
+    <Box width={"100vw"} height={"100vh"} bg="#1e272e" display={"flex"}>
       <Box margin={"auto"} textAlign="center" width={400}>
         <Box textAlign="start" marginBottom={3}>
           <Text

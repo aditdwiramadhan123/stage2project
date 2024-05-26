@@ -8,11 +8,12 @@ import {
   Text,
   Flex,
 } from "@chakra-ui/react";
+import { ButtonEffect1 } from "../../../assets/HoverEffect";
 
 function MyProfileCard() {
   return (
     <Card
-      bg="#3a4b5c"
+      bg="#374151"
       padding={4}
       borderRadius="md"
       marginY={3}
@@ -25,8 +26,14 @@ function MyProfileCard() {
       </Text>
       <Box width="100%" bg="pink" height={65} borderRadius={10} />
       <Flex alignItems="center" position="relative" mt={-8} mb={4} px={4}>
-        <Avatar size="lg" border="solid #2C3A47 3px" mr={4}>
-          <AvatarBadge boxSize="0.75em" bg="green.500" borderWidth={3}/>
+        <Avatar
+          size="lg"
+          border="solid #2C3A47 3px"
+          mr={4}
+          name="Segun Adebayo"
+          src="https://bit.ly/sage-adebayo"
+        >
+          <AvatarBadge boxSize="0.75em" bg="green.500" borderWidth={3} />
         </Avatar>
         {/* Tombol "Edit Profile" dengan event handler onClick */}
         <Button
@@ -39,31 +46,32 @@ function MyProfileCard() {
           position="absolute"
           top={"60%"}
           left={"70%"}
+          sx={ButtonEffect1}
         >
           Edit Profile
         </Button>
       </Flex>
       <Box px={1}>
-        <Text color="white" fontSize={21} fontWeight={500}>
+        <Text color="white" fontSize={20} fontWeight={500}>
           Adit Dwi Ramadhan 33
         </Text>
-        <Text color="gray.400" fontSize={13} my={1} fontStyle="italic">
+        <Text color="gray.400" fontSize={12} my={1} fontStyle="italic">
           @aditdwi_r
         </Text>
-        <Text color="gray.200" fontSize={13} mb={2}>
+        <Text color="gray.100" fontSize={12} mb={2}>
           hidup cuman sekali brooo!!
         </Text>
         <Flex>
-          <Text color="gray.200" fontSize={13} fontWeight={500} mr={1}>
+          <Text color="gray.200" fontSize={12} fontWeight={500} mr={1}>
             291
           </Text>
-          <Text color="gray.500" fontSize={12} mr={3}>
+          <Text color="gray.400" fontSize={12} mr={3}>
             Following
           </Text>
           <Text color="gray.200" fontSize={12} fontWeight={500} mr={1}>
             291
           </Text>
-          <Text color="gray.500" fontSize={12}>
+          <Text color="gray.400" fontSize={12}>
             Followers
           </Text>
         </Flex>

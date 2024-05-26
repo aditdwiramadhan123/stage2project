@@ -1,16 +1,31 @@
 // src/App.js atau src/App.tsx
 import React from "react";
-import Home from "./pages/Home";
-import SignPage from "./pages/SignPage/RegisterPage";
-import Login from "./pages/SignPage/LoginPage";
-import { Box } from "@chakra-ui/react";
+import { Grid } from "@chakra-ui/react";
+import SideBar from "./components/sideComponents/sideBar/SideBar";
+import ProfileCard from "./components/sideComponents/ProfileSideBar/ProfileCard";
+import Home from "./pages/HomePage";
+import CommentItems from "./components/DetilPostPageComponents/CommentItems"
+import DetilStatusPage from "./pages/DetilStatusPage";
 function App() {
   return (
-    <Box>
-      <SignPage />
-      <Login />
-      <Home />
-    </Box>
+    <Grid
+      h="100vh"
+      templateColumns="17vw 58vw 25vw"
+      gap={0}
+      bg={"#1e272e"}
+      maxWidth={"100vw"}
+    >
+      {/* sidebar */}
+      <SideBar></SideBar>
+
+      {/* content */}
+      <Home></Home>
+      {/* <DetilStatusPage/> */}
+
+      {/*Profile Sidebar*/}
+      <ProfileCard />
+    </Grid>
+  
   );
 }
 

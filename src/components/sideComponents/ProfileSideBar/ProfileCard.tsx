@@ -8,7 +8,7 @@ export default function ProfileCard() {
     <Grid
       h="100vh"
       width="100%"
-      templateRows="repeat(2, 1fr)"
+      templateRows="0.7fr 1.3fr"
       placeItems="center"
     >
       <MyProfileCard />

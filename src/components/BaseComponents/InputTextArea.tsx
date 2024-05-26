@@ -9,23 +9,25 @@ import {
 } from "@chakra-ui/react";
 import { FaImage } from "react-icons/fa";
 
-function PostTextArea() {
+function InputTextArea({placeHolder,background,inputBackground}:{placeHolder:string,background:string,inputBackground:string}) {
   return (
-    <Card bg="none" borderRadius={0}  borderBottom={"solid 1px white"}>
-      <CardHeader py={4}>
+    <Card  bg={background} borderRadius={0} marginY={0.5}>
+      <CardHeader py={2}>
         <Flex alignItems="center">
           <Avatar name="Segun Adebayo" src="https://bit.ly/sage-adebayo" size={"sm"} />
           <Textarea
-          fontSize={15}
-            placeholder="What's happening?"
-            rows={2}
+          fontSize={12}
+            placeholder={placeHolder}
+            rows={1}
             resize="none"
+            padding={3}
             ml={3}
             color="white"
-            bg="#374151"
-            borderRadius="md"
+            bg={inputBackground}
+            borderRadius={30}
             _placeholder={{ color: 'gray.400' }}
             _focus={{ borderColor: 'teal.400' }}
+            
           />
           <Button
             leftIcon={<FaImage />}
@@ -45,4 +47,4 @@ function PostTextArea() {
   );
 }
 
-export default PostTextArea;
+export default InputTextArea;

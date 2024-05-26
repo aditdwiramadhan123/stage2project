@@ -1,6 +1,6 @@
 import React from "react";
 import { Box } from "@chakra-ui/react";
-import {Text} from "@chakra-ui/react";
+import {Text,Link} from "@chakra-ui/react";
 
 interface BarMenuProps {
   menu: string;
@@ -9,16 +9,17 @@ interface BarMenuProps {
 
 const BarMenu: React.FC<BarMenuProps> = ({ menu, icon: Icon }) => {
   return (
-    <a href="">
+    <Link  marginY={1} href="">
       <Box
         display={"flex"}
-        height={59}
+        height={31}
         padding={5}
         justifyContent={"flex-start"}
         alignItems={"center"}
-        boxShadow="0px 2px 2px 2px rgba(0, 0, 0, 0.1)"
-        bg={"#2C3A47"}
-        marginY={1}
+       
+        borderBottom={"solid 2px  rgba(0, 0, 0, 0.1)"}
+        bg={"none"}
+        marginY={0}
         sx={{
           "&:hover": {
             backgroundColor: "rgba(255, 255, 255, 0.1)", // Adjust the value to get the desired lightness
@@ -26,11 +27,11 @@ const BarMenu: React.FC<BarMenuProps> = ({ menu, icon: Icon }) => {
           },
         }}
       >
-        <Icon size={15} style={{ marginRight: "10px", color: "white" }} />{" "}
+        <Icon size={14} style={{ marginRight: "10px", color: "white" }} />{" "}
         {/* Me-render komponen 'icon' sebagai sebuah elemen JSX */}
-        <Text fontSize={15} style={{ color: "white" }}>{menu}</Text>
+        <Text fontSize={14} style={{ color: "white" }}>{menu}</Text>
       </Box>
-    </a>
+    </Link>
   );
 };
 

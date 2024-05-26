@@ -14,6 +14,7 @@ function SideBar() {
       height="100vh"
       bg={"none"}
       padding={5}
+      paddingLeft={3}
       position={"relative"}
       borderRadius={0}
       maxWidth={"100%"}
@@ -30,6 +31,7 @@ function SideBar() {
         width={"90%"}
         borderRadius={20}
         marginY={10}
+        color={"white"}
       >
         Create post
       </Button>
