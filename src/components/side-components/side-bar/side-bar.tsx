@@ -6,7 +6,7 @@ import { FaSearch } from "react-icons/fa";
 import { FaDoorOpen } from "react-icons/fa";
 import { Text } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/react";
-import BarMenu from "./MenuBar";
+import BarMenu from "./menu-bar";
 
 function SideBar() {
   return (
@@ -22,10 +22,10 @@ function SideBar() {
       <Text fontSize={50} color={"#009432"} fontWeight={500} marginBottom={5}>
         circle
       </Text>
-      <BarMenu menu="Home" icon={FaHome} />
-      <BarMenu menu="Search" icon={FaSearch} />
-      <BarMenu menu="Follow" icon={FaHeart} />
-      <BarMenu menu="Profile" icon={CgProfile} />
+      <BarMenu menu="Home" icon={FaHome} link="/"/>
+      <BarMenu menu="Search" icon={FaSearch} link="/search" />
+      <BarMenu menu="Follow" icon={FaHeart} link="/" />
+      <BarMenu menu="Profile" icon={CgProfile}  link="/"/>
       <Button
         backgroundColor="#009432"
         width={"90%"}

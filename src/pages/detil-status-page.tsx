@@ -1,7 +1,7 @@
-import CommentItem from "../components/DetilPostPageComponents/CommentItems";
+import CommentItem from "../components/detil-post-page-components/comment-items";
 import { BiArrowBack } from "react-icons/bi";
-import PostTextArea from "../components/BaseComponents/InputTextArea";
-import PostItem from "../components/BaseComponents/PostItem";
+import PostTextArea from "../components/base-components/input-text-area";
+import PostItem from "../components/base-components/post-item";
 import { Card, Text, Grid, Box, Icon } from "@chakra-ui/react";
 
 function DetilStatusPage() {

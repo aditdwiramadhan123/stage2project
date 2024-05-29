@@ -8,50 +8,58 @@ import {
   Text,
   Flex,
 } from "@chakra-ui/react";
-import { ButtonEffect1 } from "../../../assets/HoverEffect";
+import { ButtonEffect1 } from "../../../assets/hover-effets";
+import EditProfil from "../../edit-profil-modal";
 
-function MyProfileCard() {
+function MyProfileCard({bgColor}:{bgColor?:string}) {
   return (
     <Card
-      bg="#374151"
-      padding={4}
+      bg={bgColor}
+      paddingX={"5%"}
+      py={2}
       borderRadius="md"
-      marginY={3}
-      height={"95%"}
-      width={"95%"}
+      margin={0}
+      width={"100%"}
+      height={305}
       position={"relative"}
+      display={"flex"}
+      flexDirection={"column"}
     >
-      <Text color="white" fontSize={15} fontWeight={500} mb={4}>
+      <Text color="white" fontSize={15} fontWeight={500} mb={2}>
         My profile
       </Text>
       <Box width="100%" bg="pink" height={65} borderRadius={10} />
-      <Flex alignItems="center" position="relative" mt={-8} mb={4} px={4}>
+
+      <Box
+        position={"absolute"}
+        top={77}
+        width={"90%"}
+        display={"flex"}
+        flexDirection={"column"}
+        justifyContent={"center"}
+        bg={"none"}
+        marginX={"auto"}
+      >
         <Avatar
           size="lg"
           border="solid #2C3A47 3px"
-          mr={4}
           name="Segun Adebayo"
           src="https://bit.ly/sage-adebayo"
+          position={"relative"}
+          left={3}
+          p={0}
+          m={0}
         >
           <AvatarBadge boxSize="0.75em" bg="green.500" borderWidth={3} />
         </Avatar>
-        {/* Tombol "Edit Profile" dengan event handler onClick */}
-        <Button
-          colorScheme="gray"
-          variant="outline"
-          color="white"
-          borderRadius={20}
-          fontSize={10}
-          height={6}
-          position="absolute"
-          top={"60%"}
-          left={"70%"}
-          sx={ButtonEffect1}
+        <Box
+          width={"100%"}
+          display={"flex"}
+          justifyContent={"end"}
+          marginBottom={2}
         >
-          Edit Profile
-        </Button>
-      </Flex>
-      <Box px={1}>
+          <EditProfil/>
+        </Box>
         <Text color="white" fontSize={20} fontWeight={500}>
           Adit Dwi Ramadhan 33
         </Text>

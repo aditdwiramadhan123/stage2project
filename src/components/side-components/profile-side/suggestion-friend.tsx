@@ -1,14 +1,11 @@
 import React, { useState, useCallback } from "react";
-import { Card, Avatar, Box, Text, Button, Flex } from "@chakra-ui/react";
-import { ButtonEffect1 } from "../../../assets/HoverEffect";
-
+import { Card, Avatar, Box, Text, Button, Flex, Link } from "@chakra-ui/react";
+import { ButtonEffect1 } from "../../../assets/hover-effets";
+import useFollowFriend from "../../../hook/use-folllow-friend";
+import { LinkEffect } from "../../../assets/hover-effets";
 
 function FriendCard() {
-  let [isFollow, setIsFollow] = useState<boolean>(false);
-  const changeStatus = () => {
-    setIsFollow(!isFollow);
-  };
-
+  const { isFollow, changeStatus } = useFollowFriend();
   return (
     <Card p={2} color="white" borderRadius={0} bg={"none"}>
       <Flex alignItems="center" justify="space-between">
@@ -19,8 +16,8 @@ function FriendCard() {
           mr={2}
         />
         <Box flex="1">
-          <Text fontWeight="bold" fontSize={12}>
-            Via Fitriani
+          <Text fontWeight="bold" fontSize={12} sx={LinkEffect}>
+            <Link href="profilePage">Via Fitriani</Link>
           </Text>
           <Text fontSize={11} color="gray.300">
             @ViaFitriani
@@ -36,7 +33,7 @@ function FriendCard() {
           onClick={changeStatus}
           sx={ButtonEffect1}
         >
-          {isFollow? 'following' : "follow"}
+          {isFollow ? "following" : "follow"}
         </Button>
       </Flex>
     </Card>

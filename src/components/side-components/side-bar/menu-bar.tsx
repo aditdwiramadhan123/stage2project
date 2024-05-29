@@ -2,14 +2,11 @@ import React from "react";
 import { Box } from "@chakra-ui/react";
 import {Text,Link} from "@chakra-ui/react";
 
-interface BarMenuProps {
-  menu: string;
-  icon: React.ElementType; // Menggunakan tipe React.ElementType untuk menunjukkan bahwa properti 'icon' menerima sebuah komponen React
-}
 
-const BarMenu: React.FC<BarMenuProps> = ({ menu, icon: Icon }) => {
+
+const BarMenu = ({ menu, icon,link } : {menu:string, icon: React.ElementType, link:string}) => {
   return (
-    <Link  marginY={1} href="">
+    <Link  marginY={1} href={link}>
       <Box
         display={"flex"}
         height={31}
@@ -27,7 +24,7 @@ const BarMenu: React.FC<BarMenuProps> = ({ menu, icon: Icon }) => {
           },
         }}
       >
-        <Icon size={14} style={{ marginRight: "10px", color: "white" }} />{" "}
+        <Box as={icon} size={14} style={{ marginRight: "10px", color: "white" }} />
         {/* Me-render komponen 'icon' sebagai sebuah elemen JSX */}
         <Text fontSize={14} style={{ color: "white" }}>{menu}</Text>
       </Box>

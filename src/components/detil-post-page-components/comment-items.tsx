@@ -15,20 +15,20 @@ import {
 } from "@chakra-ui/react";
 import { BiLike, BiChat, BiSolidLike } from "react-icons/bi";
 import { transform } from "framer-motion";
-import { NoneEffect, LinkEffect } from "../../assets/HoverEffect";
+import { NoneEffect, LinkEffect } from "../../assets/hover-effets";
 const likeAnimation = keyframes`
   0% { transform: scale(1); }
   50% { transform: scale(1.2); }
   100% { transform: scale(1); }
 `;
 
-function PostItem() {
+function CommentItem() {
   let [isLike, setIsLike] = useState<boolean>(false);
   const changeStatus = () => {
     setIsLike(!isLike);
   };
   return (
-    <Card bg="#293238" borderRadius={10} marginY={1.5} paddingY={1}>
+    <Card bg="none" borderRadius={0} marginY={0} paddingY={1}  borderBottom={"solid 2px  rgba(0, 0, 0, 0.1)"}>
       <CardHeader paddingY={1}>
         <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
           <Avatar
@@ -37,18 +37,19 @@ function PostItem() {
             color="white"
             size={"sm"}
           />
-          <Box>
+          <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
             <Heading
               fontSize={12}
               color="white"
               sx={LinkEffect}
               cursor={"pointer"}
-              marginBottom={0.7}
+     
+            
             >
               Segun Adebayo
             </Heading>
-            <Text fontSize={10} color="gray.400">
-              @username • 4 hour
+            <Text fontSize={11} color="gray.400" position={"relative"} top={0.999} marginLeft={1} >
+              | @username • 4 hour
             </Text>
           </Box>
         </Flex>
@@ -59,15 +60,15 @@ function PostItem() {
           speed of design. I wanted the developer to be just as excited as the
           designer to create a screen.
         </Text>
-        <Image
+        {/* <Image
           objectFit="cover"
           src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
           alt="Chakra UI"
-          width={200}
-          height={200}
+          width={100}
+          height={100}
           borderRadius={10}
           marginTop={3}
-        />
+        /> */}
       </CardBody>
       <CardFooter paddingX={49} paddingY={1}>
         <Box
@@ -157,4 +158,4 @@ function PostItem() {
   );
 }
 
-export default PostItem;
+export default CommentItem;

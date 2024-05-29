@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, FormControl, Input, Button, Text, Link } from "@chakra-ui/react";
 
-export default function SignPage() {
+export default function LoginPage() {
   return (
     <Box width={"100vw"} height={"100vh"} bg="#1e272e" display={"flex"}>
       <Box margin={"auto"} textAlign="center">

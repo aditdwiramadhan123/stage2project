@@ -1,31 +1,50 @@
 // src/App.js atau src/App.tsx
 import React from "react";
-import { Grid } from "@chakra-ui/react";
-import SideBar from "./components/sideComponents/sideBar/SideBar";
-import ProfileCard from "./components/sideComponents/ProfileSideBar/ProfileCard";
-import Home from "./pages/HomePage";
-import CommentItems from "./components/DetilPostPageComponents/CommentItems"
-import DetilStatusPage from "./pages/DetilStatusPage";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/home-page";
+import DetilStatusPage from "./pages/detil-status-page";
+import LoginPage from "./pages/sign-page/login-page";
+import RegisterPage from "./pages/sign-page/register-page";
+import MainLayout from "./pages/main-layout";
+import TabItemProfil from "./components/profil-components/tab-item";
+import ProfilePage from "./pages/profile-page";
+import ListMedia from "./components/profil-components/list-media";
+import EditProfil from "./components/edit-profil-modal";
+import { TabItemProvider } from "./hook/use-context-tab-item";
+import SearchPage from "./pages/search-page";
+
 function App() {
   return (
-    <Grid
-      h="100vh"
-      templateColumns="17vw 58vw 25vw"
-      gap={0}
-      bg={"#1e272e"}
-      maxWidth={"100vw"}
-    >
-      {/* sidebar */}
-      <SideBar></SideBar>
+    <Routes>
+      <Route path="/" element={<MainLayout />}>
+        <Route index element={<Home />} />
+        <Route path="status" element={<DetilStatusPage />} />
+        <Route
+          path="profilePage"
+          element={
+            <TabItemProvider>
+              <ProfilePage />
+            </TabItemProvider>
+          }
+        />
+        <Route path="search" element={<SearchPage />} />
+      </Route>
+      <Route path="login" element={<LoginPage />} />
+      <Route path="register" element={<RegisterPage />} />
 
-      {/* content */}
-      <Home></Home>
-      {/* <DetilStatusPage/> */}
-
-      {/*Profile Sidebar*/}
-      <ProfileCard />
-    </Grid>
-  
+      {/* coba element */}
+      <Route
+        path="tabItem"
+        element={
+          <TabItemProvider>
+            <TabItemProfil />
+          </TabItemProvider>
+        }
+      />
+      <Route path="ListMedia" element={<ListMedia />} />
+      <Route path="editProfil" element={<EditProfil />} />
+      <Route path="search" element={<SearchPage />} />
+    </Routes>
   );
 }
 

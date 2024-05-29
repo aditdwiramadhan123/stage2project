@@ -1,6 +1,7 @@
-import PostTextArea from "../components/BaseComponents/InputTextArea";
-import PostItem from "../components/BaseComponents/PostItem";
+import PostTextArea from "../components/base-components/input-text-area";
+import PostItem from "../components/base-components/post-item";
 import { Card, Text, Grid, Box } from "@chakra-ui/react";
+import ListPostItem from "../components/base-components/list-post-item";
 
 function HomePage() {
   return (
@@ -31,10 +32,7 @@ function HomePage() {
         }}
       >
         <PostTextArea placeHolder="What is happening?!" background="#1e272e" inputBackground="#374151" />
-        <PostItem />
-        <PostItem />
-        <PostItem />
-        <PostItem />
+        <ListPostItem />
         {/* Tambahkan PostItem lagi sesuai kebutuhan */}
       </Card>
     </Grid>
