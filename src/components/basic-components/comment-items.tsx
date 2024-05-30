@@ -9,26 +9,25 @@ import {
   Avatar,
   Heading,
   Text,
-  Image,
   Button,
-  keyframes,
+  Image,
 } from "@chakra-ui/react";
 import { BiLike, BiChat, BiSolidLike } from "react-icons/bi";
-import { transform } from "framer-motion";
 import { NoneEffect, LinkEffect } from "../../assets/hover-effets";
-const likeAnimation = keyframes`
-  0% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); }
-`;
+import likeAnimation from "../../assets/animation";
+import { commentType } from "../../data/comment";
+import UseLikePost from "../../hook/use-like";
 
-function CommentItem() {
-  let [isLike, setIsLike] = useState<boolean>(false);
-  const changeStatus = () => {
-    setIsLike(!isLike);
-  };
+function CommentItem({comment}: {comment:commentType}) {
+  let {isLike, changeStatus} = UseLikePost(comment.isLike);
   return (
-    <Card bg="none" borderRadius={0} marginY={0} paddingY={1}  borderBottom={"solid 2px  rgba(0, 0, 0, 0.1)"}>
+    <Card
+      bg="none"
+      borderRadius={0}
+      marginY={0}
+      paddingY={1}
+      borderBottom={"solid 2px  rgba(0, 0, 0, 0.1)"}
+    >
       <CardHeader paddingY={1}>
         <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
           <Avatar
@@ -43,34 +42,37 @@ function CommentItem() {
               color="white"
               sx={LinkEffect}
               cursor={"pointer"}
-     
-            
             >
-              Segun Adebayo
+              {comment.name}
             </Heading>
-            <Text fontSize={11} color="gray.400" position={"relative"} top={0.999} marginLeft={1} >
-              | @username • 4 hour
+            <Text
+              fontSize={11}
+              color="gray.400"
+              position={"relative"}
+              top={0.999}
+              marginLeft={1}
+            >
+              | @{comment.username} • 4 {comment.time}
             </Text>
           </Box>
         </Flex>
       </CardHeader>
       <CardBody paddingX={68} paddingY={0}>
         <Text color="white" fontSize={12}>
-          With Chakra UI, I wanted to sync the speed of development with the
-          speed of design. I wanted the developer to be just as excited as the
-          designer to create a screen.
+          {comment.caption}
         </Text>
-        {/* <Image
+        <Image
           objectFit="cover"
-          src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+          src={comment.linkImage}
           alt="Chakra UI"
           width={100}
           height={100}
           borderRadius={10}
           marginTop={3}
-        /> */}
+          display={comment.image ? "blok" : "none"}
+        />
       </CardBody>
-      <CardFooter paddingX={49} paddingY={1}>
+      <CardFooter paddingX={45} paddingY={1}>
         <Box
           display={"flex"}
           width={200}
@@ -117,7 +119,7 @@ function CommentItem() {
               top={0.5}
               right={2}
             >
-              3000
+              {comment.likesCount}
             </Text>
           </Button>
 
@@ -149,7 +151,7 @@ function CommentItem() {
               top={0.5}
               right={2}
             >
-              3000
+              {comment.commentCount}
             </Text>
           </Button>
         </Box>

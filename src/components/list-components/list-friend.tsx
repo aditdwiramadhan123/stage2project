@@ -1,6 +1,7 @@
 import React from "react";
 import { Box } from "@chakra-ui/react";
-import FriendCard from "./suggestion-friend";
+import FriendCard from "../basic-components/friend-card";
+import listFriend from "../../data/friend";
 
 function ListFriendCard() {
   return (
@@ -8,13 +9,7 @@ function ListFriendCard() {
       width={"100%"} height={"100%"}
     >
       {/* Menambahkan FriendCard sebanyak yang dibutuhkan */}
-      <FriendCard />
-      <FriendCard />
-      <FriendCard />
-      <FriendCard />
-      <FriendCard />
-      <FriendCard />
-      <FriendCard />
+      {listFriend.map((friend)=>(<FriendCard friend={friend}/>))}
     </Box>
   );
 }

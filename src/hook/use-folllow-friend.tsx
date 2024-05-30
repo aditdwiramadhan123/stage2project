@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-function useFollowFriend() {
-  const [isFollow, setIsFollow] = useState<boolean>(false);
+function useFollowFriend(follow:boolean) {
+  const [isFollow, setIsFollow] = useState<boolean>(follow);
 
   const changeStatus = () => {
     setIsFollow(!isFollow);

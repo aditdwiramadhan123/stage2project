@@ -1,8 +1,10 @@
-import CommentItem from "../components/detil-post-page-components/comment-items";
+import CommentItem from "../components/basic-components/comment-items";
 import { BiArrowBack } from "react-icons/bi";
-import PostTextArea from "../components/base-components/input-text-area";
-import PostItem from "../components/base-components/post-item";
+import PostTextArea from "../components/input-text-area";
+import PostItem from "../components/basic-components/post-item";
 import { Card, Text, Grid, Box, Icon } from "@chakra-ui/react";
+import ListComment from "../components/list-components/list-comment-item";
+import postList from "../data/post";
 
 function DetilStatusPage() {
   return (
@@ -34,17 +36,16 @@ function DetilStatusPage() {
           },
         }}
       >
-        <PostItem />
+        <PostItem  post={postList[0]}/>
         <PostTextArea
           placeHolder="masukan komen"
           background="none"
           inputBackground="none"
         />
-        <CommentItem />
-        <CommentItem />
-        <CommentItem />
-        <CommentItem />
-        {/* Tambahkan PostItem lagi sesuai kebutuhan */}
+
+        {/* comment */}
+        <ListComment />
+      
       </Card>
     </Grid>
   );

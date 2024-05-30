@@ -24,8 +24,8 @@ function SideBar() {
       </Text>
       <BarMenu menu="Home" icon={FaHome} link="/"/>
       <BarMenu menu="Search" icon={FaSearch} link="/search" />
-      <BarMenu menu="Follow" icon={FaHeart} link="/" />
-      <BarMenu menu="Profile" icon={CgProfile}  link="/"/>
+      <BarMenu menu="Follow" icon={FaHeart} link="/listFollow" />
+      <BarMenu menu="Profile" icon={CgProfile}  link="/profilePage"/>
       <Button
         backgroundColor="#009432"
         width={"90%"}

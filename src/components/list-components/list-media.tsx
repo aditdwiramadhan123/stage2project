@@ -1,19 +1,14 @@
 import React from "react";
 import { Box, Grid, Image } from "@chakra-ui/react";
+import listImage from "../../data/image";
 
-const images = [
-  "https://via.placeholder.com/150",
-  "https://via.placeholder.com/150",
-  "https://via.placeholder.com/150",
-  "https://via.placeholder.com/150",
-  // Tambahkan URL gambar lainnya sesuai kebutuhan
-];
+
 
 const ListMedia: React.FC = () => {
   return (
     <Box p={4}>
       <Grid templateColumns="repeat(3, 1fr)" gap={1} bg={"none"}>
-        {images.map((src, index) => (
+        {listImage.map((image, index) => (
           <Box
             key={index}
             bg="none"
@@ -28,7 +23,7 @@ const ListMedia: React.FC = () => {
             }}
           >
             <Image
-              src={src}
+              src={image.image}
               alt={`Gambar ${index + 1}`}
               objectFit="cover"
               width="100%"

@@ -1,7 +1,7 @@
 import {useState} from 'react'
 
-function UseLikePost() {
-    let [isLike, setIsLike] = useState<boolean>(false);
+function UseLikePost(like:boolean) {
+    let [isLike, setIsLike] = useState<boolean>(like);
     const changeStatus = () => {
       setIsLike(!isLike);
     };

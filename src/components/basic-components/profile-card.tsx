@@ -3,15 +3,15 @@ import {
   AvatarBadge,
   Avatar,
   Box,
-  Button,
   Card,
   Text,
   Flex,
 } from "@chakra-ui/react";
-import { ButtonEffect1 } from "../../../assets/hover-effets";
-import EditProfil from "../../edit-profil-modal";
+import { ButtonEffect1 } from "../../assets/hover-effets";
+import EditProfil from "../edit-profil-modal";
+import { profileType } from "../../data/profile";
 
-function MyProfileCard({bgColor}:{bgColor?:string}) {
+function MyProfileCard({bgColor,profile}:{bgColor?:string,profile:profileType}) {
   return (
     <Card
       bg={bgColor}
@@ -43,8 +43,8 @@ function MyProfileCard({bgColor}:{bgColor?:string}) {
         <Avatar
           size="lg"
           border="solid #2C3A47 3px"
-          name="Segun Adebayo"
-          src="https://bit.ly/sage-adebayo"
+          name= {profile.name}
+          src={profile.imageProfilLink}
           position={"relative"}
           left={3}
           p={0}
@@ -61,23 +61,23 @@ function MyProfileCard({bgColor}:{bgColor?:string}) {
           <EditProfil/>
         </Box>
         <Text color="white" fontSize={20} fontWeight={500}>
-          Adit Dwi Ramadhan 33
+         {profile.name}
         </Text>
         <Text color="gray.400" fontSize={12} my={1} fontStyle="italic">
-          @aditdwi_r
+          @{profile.username}
         </Text>
         <Text color="gray.100" fontSize={12} mb={2}>
-          hidup cuman sekali brooo!!
+          {profile.quote}
         </Text>
         <Flex>
           <Text color="gray.200" fontSize={12} fontWeight={500} mr={1}>
-            291
+            {profile.following}
           </Text>
           <Text color="gray.400" fontSize={12} mr={3}>
             Following
           </Text>
           <Text color="gray.200" fontSize={12} fontWeight={500} mr={1}>
-            291
+            {profile.follower}
           </Text>
           <Text color="gray.400" fontSize={12}>
             Followers

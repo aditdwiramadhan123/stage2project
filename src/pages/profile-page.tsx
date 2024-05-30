@@ -1,10 +1,11 @@
 import React from "react";
-import MyProfileCard from "../components/side-components/profile-side/my-profile-card";
+import MyProfileCard from "../components/basic-components/profile-card";
 import { Box, Card } from "@chakra-ui/react";
-import TabItemProfil from "../components/profil-components/tab-item";
-import ListPostItem from "../components/base-components/list-post-item";
-import ListMedia from "../components/profil-components/list-media";
+import TabItemProfil from "../components/tab-item-profil";
+import ListPostItem from "../components/list-components/list-post-item";
+import ListMedia from "../components/list-components/list-media";
 import { useTabItemContext } from "../hook/use-context-tab-item";
+import listProfile from "../data/profile";
 
 export default function ProfilePage() {
   const { isMediaClick, isPostClick, clickMedia, clickPost } =
@@ -30,7 +31,7 @@ export default function ProfilePage() {
       height={"100vh"}
     >
       <Box bg={"brand.primary"}>
-        <MyProfileCard bgColor="brand.primary" />
+        <MyProfileCard profile={listProfile[2]} bgColor="brand.primary" />
         <Box position="relative" bottom={2}>
           <TabItemProfil />
         </Box>

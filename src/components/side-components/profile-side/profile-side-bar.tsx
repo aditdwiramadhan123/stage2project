@@ -1,7 +1,8 @@
 import React from "react";
-import ListFriendCard from "./list-suggestion-friends";
-import MyProfileCard from "./my-profile-card";
+import ListFriendCard from "../../list-components/list-friend";
+import MyProfileCard from "../../basic-components/profile-card";
 import { Grid, GridItem, Text, Card, Box } from "@chakra-ui/react";
+import listProfile from "../../../data/profile";
 
 export default function ProfileCard() {
   return (
@@ -17,7 +18,7 @@ export default function ProfileCard() {
         placeContent={"center"}
         overflow={"hidden"}
       >
-        <MyProfileCard bgColor="brand.tertiary" />
+        <MyProfileCard profile={listProfile[0]} bgColor="brand.tertiary" />
       </GridItem>
       <GridItem
         borderRadius="lg"

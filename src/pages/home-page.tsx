@@ -1,7 +1,7 @@
-import PostTextArea from "../components/base-components/input-text-area";
-import PostItem from "../components/base-components/post-item";
+import PostTextArea from "../components/input-text-area";
+import PostItem from "../components/basic-components/post-item";
 import { Card, Text, Grid, Box } from "@chakra-ui/react";
-import ListPostItem from "../components/base-components/list-post-item";
+import ListPostItem from "../components/list-components/list-post-item";
 
 function HomePage() {
   return (

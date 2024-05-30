@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Box } from "@chakra-ui/react";
-import { NoneEffect } from "../../assets/hover-effets";
-import { useTabItemContext } from "../../hook/use-context-tab-item";
+import { NoneEffect } from "../assets/hover-effets";
+import { useTabItemContext } from "../hook/use-context-followers";
 
 export function TabItem({
   children,
@@ -38,15 +38,15 @@ export function TabItem({
   );
 }
 
-function TabItemProfil() {
-  const { isMediaClick, isPostClick, clickMedia, clickPost } =
+function TabItemFollow() {
+  const { isFollowerClick, isFollowingClick, clickFollower, clickFollowing } =
     useTabItemContext();
   return (
     <Box width={"100%"} display={"flex"}>
-      <TabItem isClick={isPostClick} children="All post" f_use={clickPost} />
-      <TabItem isClick={isMediaClick} children="Media" f_use={clickMedia} />
+      <TabItem isClick={isFollowerClick} children="follower" f_use={clickFollower} />
+      <TabItem isClick={isFollowingClick} children="following" f_use={clickFollowing} />
     </Box>
   );
 }
 
-export default TabItemProfil;
+export default TabItemFollow;
