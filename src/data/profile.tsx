@@ -5,9 +5,9 @@ export interface profileType {
   following: number;
   follower: number;
   imageProfil: boolean;
-  imageProfilLink?: string;
+  imageProfilLink?: string|null;
   coverImage: boolean;
-  coverImageLink?: string;
+  coverImageLink?: string|null;
 }
 
 const listProfile: profileType[] = [
@@ -69,3 +69,4 @@ const listProfile: profileType[] = [
 ];
 
 export default listProfile;
+

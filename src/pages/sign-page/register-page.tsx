@@ -1,7 +1,98 @@
-import React from "react";
-import { Box, FormControl, Input, Button, Text, Link } from "@chakra-ui/react";
+import React, { useState } from "react";
+import { Box, FormControl, Input, Text, Link } from "@chakra-ui/react";
+import { api } from "../../services/api";
+import { useLoginContext } from "../../hook/use-context-login";
+import { SET_USER } from "../../redux/slice/auth";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useToast } from "@chakra-ui/react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import axios from "axios";
+
+interface RegisterForm {
+  name: string;
+  username: string;
+  email: string;
+  password: string;
+}
+
+const registerSchema = z.object({
+  name: z
+    .string({ message: "name must be a string" })
+    .min(2, { message: "name must be at least 2 characters" })
+    .max(50, { message: "name must be at most 50 characters" }),
+  username: z
+    .string({ message: "username must be a string" })
+    .min(3, { message: "username must be at least 3 characters" })
+    .max(30, { message: "username must be at most 30 characters" }),
+  email: z
+    .string({ message: "Email must be a string" })
+    .email({ message: "Email not valid" }),
+  password: z
+    .string({ message: "Password must be a string" })
+    .min(6, { message: "Password must be at least 6 characters" }),
+});
 
 export default function RegisterPage() {
+  const { isLogin, setIsLogin } = useLoginContext();
+  const toast = useToast();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<RegisterForm>({
+    mode: "onSubmit",
+    resolver: zodResolver(registerSchema),
+  });
+  const [error, setError] = useState<string | null>(null);
+
+  // Handle form submission
+
+  const onSubmit: SubmitHandler<RegisterForm> = async (data) => {
+    try {
+      const response = await api.post(
+        "http://localhost:3000/api/v1/register",
+        data
+      );
+      const token = response.data.token;
+      const user = response.data.userDB;
+
+      if (token) {
+        localStorage.setItem("token", `Bearer ${token}`);
+        dispatch(SET_USER(user));
+        setIsLogin(true);
+        toast({
+          title: "Account created.",
+          description: "We've created your account for you.",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+        });
+        navigate("/"); // Redirect after successful registration
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response) {
+        const { message } = error.response.data;
+        setError(message);
+        console.error("Error registering:", message);
+      } else {
+        setError("An unexpected error occurred.");
+        console.error("Error registering:", error);
+      }
+    }
+  };
+
+  if (isLogin) {
+    return navigate("/"); // Redirect if already logged in
+  }
+
+  console.log(errors);
+
   return (
     <Box width={"100vw"} height={"100vh"} bg="#1e272e" display={"flex"}>
       <Box margin={"auto"} textAlign="center" width={400}>
@@ -20,52 +111,91 @@ export default function RegisterPage() {
           </Text>
         </Box>
 
-        <FormControl>
+        <FormControl as="form" onSubmit={handleSubmit(onSubmit)}>
           <Input
-            id="fullname"
             type="text"
-            placeholder="fullname *"
+            placeholder="Fullname *"
             color="white"
             bg="#485460"
             border="none"
             mb={3}
+            {...register("name")}
           />
 
           <Input
-            id="email"
             type="text"
-            placeholder="email *"
+            placeholder="Username *"
             color="white"
             bg="#485460"
             border="none"
             mb={3}
+            {...register("username")}
           />
 
           <Input
-            id="password"
+            type="email"
+            placeholder="Email *"
+            color="white"
+            bg="#485460"
+            border="none"
+            mb={3}
+            {...register("email")}
+          />
+
+          <Input
             type="password"
             placeholder="Password *"
             color="white"
             bg="#485460"
             border="none"
             mb={3}
+            {...register("password")}
           />
           <Text color="white" mb={2} textAlign="end">
             <Link>Forgot password?</Link>
           </Text>
-          <Button
+
+          {errors.name?.message ? (
+            <Text color="red.500" mb={2}>
+              {errors.name.message}
+            </Text>
+          ) : errors.username?.message ? (
+            <Text color="red.500" mb={2}>
+              {errors.username.message}
+            </Text>
+          ) : errors.email?.message ? (
+            <Text color="red.500" mb={2}>
+              {errors.email.message}
+            </Text>
+          ) : errors.password?.message ? (
+            <Text color="red.500" mb={2}>
+              {errors.password.message}
+            </Text>
+          ) : error ? (
+            <Text color="red.500" mb={2}>
+              {error}
+            </Text>
+          ) : null}
+
+          <Input
+            type="submit"
             backgroundColor="#009432"
             width={"90%"}
             borderRadius={20}
-            type="submit"
             mb={4}
-          >
-            Create
-          </Button>
+            value={"Sign up"}
+            border={"none"}
+            fontWeight={600}
+            cursor={"pointer"}
+            marginX={"auto"}
+          />
         </FormControl>
         <Text color="white" mt={2} textAlign={"start"}>
-         Already have an account? 
-          <Link color={"#009432"}> Login</Link>
+          Already have an account?
+          <Link color={"#009432"} href="/login">
+            {" "}
+            Login
+          </Link>
         </Text>
       </Box>
     </Box>

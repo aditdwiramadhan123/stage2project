@@ -1,9 +1,10 @@
 import PostTextArea from "../components/input-text-area";
-import PostItem from "../components/basic-components/post-item";
 import { Card, Text, Grid, Box } from "@chakra-ui/react";
 import ListPostItem from "../components/list-components/list-post-item";
 
+
 function HomePage() {
+
   return (
     <Grid templateRows="auto 1fr" height="100vh">
       {/* text home */}

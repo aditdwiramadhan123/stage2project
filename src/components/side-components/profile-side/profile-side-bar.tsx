@@ -3,8 +3,15 @@ import ListFriendCard from "../../list-components/list-friend";
 import MyProfileCard from "../../basic-components/profile-card";
 import { Grid, GridItem, Text, Card, Box } from "@chakra-ui/react";
 import listProfile from "../../../data/profile";
+import { RootState } from "../../../redux/store/store";
+import { useSelector } from "react-redux";
 
 export default function ProfileCard() {
+  const user1 = useSelector((state:RootState) => state.auth.user);
+  const user2 = listProfile[0]
+  const user = {...user2,...user1}
+  console.log("ini data user",user)
+  
   return (
     <Grid
       width="100%"
@@ -18,7 +25,7 @@ export default function ProfileCard() {
         placeContent={"center"}
         overflow={"hidden"}
       >
-        <MyProfileCard profile={listProfile[0]} bgColor="brand.tertiary" />
+        <MyProfileCard profile={user} bgColor="brand.tertiary" />
       </GridItem>
       <GridItem
         borderRadius="lg"
