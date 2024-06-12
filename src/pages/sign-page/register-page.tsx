@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Box, FormControl, Input, Text, Link } from "@chakra-ui/react";
+import { Box, FormControl, Input, Text, Link, Button } from "@chakra-ui/react";
 import { api } from "../../services/api";
 import { useLoginContext } from "../../hook/use-context-login";
 import { SET_USER } from "../../redux/slice/auth";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -88,7 +88,7 @@ export default function RegisterPage() {
   };
 
   if (isLogin) {
-    return navigate("/"); // Redirect if already logged in
+    return <Navigate to="/" />;
   }
 
   console.log(errors);
@@ -177,18 +177,18 @@ export default function RegisterPage() {
             </Text>
           ) : null}
 
-          <Input
+          <Button
             type="submit"
             backgroundColor="#009432"
-            width={"90%"}
+            width="90%"
             borderRadius={20}
-            mb={4}
-            value={"Sign up"}
-            border={"none"}
-            fontWeight={600}
-            cursor={"pointer"}
-            marginX={"auto"}
-          />
+            marginBottom={4}
+            border="none"
+            marginX="auto"
+          >
+            Sign Up
+          </Button>
+          
         </FormControl>
         <Text color="white" mt={2} textAlign={"start"}>
           Already have an account?

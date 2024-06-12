@@ -1,18 +1,23 @@
-import React, { useState, useCallback } from "react";
 import { Card, Avatar, Box, Text, Button, Flex, Link } from "@chakra-ui/react";
 import { ButtonEffect1 } from "../../assets/hover-effets";
 import useFollowFriend from "../../hook/use-folllow-friend";
 import { LinkEffect } from "../../assets/hover-effets";
-import { listFrienType } from "../../data/friend";
 
-function FriendCard({friend}:{friend:listFrienType}) {
-  const { isFollow, changeStatus } = useFollowFriend(friend.isFollow);
+interface FriendCard {
+  name: string;
+  profilePictureUrl: null | string;
+  username: string;
+  isFollow: boolean;
+}
+
+function FriendCard({friend}:{friend:FriendCard}) {
+  const { isFollow, changeStatus } = useFollowFriend(friend?.isFollow);
   return (
     <Card p={2} color="white" borderRadius={0} bg={"none"}>
       <Flex alignItems="center" justify="space-between">
         <Avatar
           name= {friend.name}
-          src= {friend.linkImageAva}
+          src={friend?.profilePictureUrl || 'defaultImage.jpg'}
           size="sm"
           mr={2}
         />

@@ -3,8 +3,8 @@ import React from "react";
 import { Grid } from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
 
-import SideBar from "../components/side-components/side-bar/side-bar";
-import ProfileCard from "../components/side-components/profile-side/profile-side-bar";
+import SideBar from "../../components/side-components/side-bar/side-bar";
+import ProfileCard from "../../components/side-components/profile-side/profile-side-bar";
 
 const MainLayout = () => {
   return (

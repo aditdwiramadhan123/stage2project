@@ -1,6 +1,6 @@
 import React from "react";
-import ListFriendCard from "../../list-components/list-friend";
-import MyProfileCard from "../../basic-components/profile-card";
+import ListFriendCard from "../../../features/friend-card/components/list-friend";
+import MyProfileCard from "../../../features/follow/components/profile-card";
 import { Grid, GridItem, Text, Card, Box } from "@chakra-ui/react";
 import listProfile from "../../../data/profile";
 import { RootState } from "../../../redux/store/store";

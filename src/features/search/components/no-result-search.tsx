@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Text } from "@chakra-ui/react";
 
-export default function NoResultSearch() {
+export default function NoResultSearch({name}:{name:string}) {
   return (
     <Box
       height={300}
@@ -12,7 +12,7 @@ export default function NoResultSearch() {
       margin={"auto"}
     >
       <Text textAlign={"center"} fontSize={18} color={"white"} fontWeight={500} mb={3}>
-        No result for "hahaahihi"
+        No result for "{name}"
       </Text>
       <Text textAlign={"center"} fontSize={12} color={"gray.500"}>
         Try searhing for something else or check of <br />

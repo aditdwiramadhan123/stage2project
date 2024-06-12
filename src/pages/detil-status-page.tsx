@@ -1,7 +1,7 @@
 import CommentItem from "../components/basic-components/comment-items";
 import { BiArrowBack } from "react-icons/bi";
 import PostTextArea from "../components/input-text-area";
-import PostItem from "../components/basic-components/post-item";
+import PostItem from "../features/home/components/post-item";
 import { Card, Text, Grid, Box, Icon } from "@chakra-ui/react";
 import ListComment from "../components/list-components/list-comment-item";
 import postList from "../data/post";

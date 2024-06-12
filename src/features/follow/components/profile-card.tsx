@@ -7,9 +7,9 @@ import {
   Text,
   Flex,
 } from "@chakra-ui/react";
-import { ButtonEffect1 } from "../../assets/hover-effets";
-import EditProfil from "../edit-profil-modal";
-import { profileType } from "../../data/profile";
+import { ButtonEffect1 } from "../../../assets/hover-effets";
+import EditProfil from "../../../components/edit-profil-modal";
+import { profileType } from "../../../data/profile";
 
 function MyProfileCard({bgColor,profile}:{bgColor?:string,profile:profileType}) {
   return (

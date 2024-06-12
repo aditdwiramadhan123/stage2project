@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Box, FormControl, Input, Text, Link } from "@chakra-ui/react";
+import { Box, FormControl, Input, Text, Link, Button } from "@chakra-ui/react";
 import { api } from "../../services/api";
 import { useDispatch } from "react-redux";
 import { SET_USER } from "../../redux/slice/auth";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 import { useLoginContext } from "../../hook/use-context-login";
 import { useToast } from "@chakra-ui/react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -18,7 +18,7 @@ interface LoginForm {
 const loginSchema = z.object({
   email: z
     .string({ message: "Email must be a string" })
-    .email({ message: "Email not valid" }),
+    .email({ message: "Email not valid, please check the format and try again." }),
   password: z
     .string({ message: "Password must be a string" })
     .min(6, { message: "Password must be at least 6 characters" }),
@@ -60,6 +60,7 @@ export default function LoginPage() {
           isClosable: true,
         });
         setIsLogin(true);
+        navigate("/");
       }
 
       // Handle success (e.g., redirect to another page)
@@ -70,7 +71,7 @@ export default function LoginPage() {
   };
 
   if (isLogin) {
-    return navigate("/");
+    return <Navigate to="/" />;
   }
 
   console.log(errors);
@@ -121,6 +122,10 @@ export default function LoginPage() {
             width={"100%"}
           />
 
+          <Text color="white" mb={2} textAlign="end">
+            <Link>Forgot password?</Link>
+          </Text>
+
           {errors.email?.message ? (
             <Text color="red.500" mb={2}>
               {errors.email.message}
@@ -135,19 +140,17 @@ export default function LoginPage() {
             </Text>
           ) : null}
 
-
-          <Input
+          <Button
             type="submit"
             backgroundColor="#009432"
-            width={"90%"}
+            width="90%"
             borderRadius={20}
-            mb={4}
-            value={"Sign in"}
-            border={"none"}
-            fontWeight={600}
-            cursor={"pointer"}
-            marginX={"auto"}
-          />
+            marginBottom={4}
+            border="none"
+            marginX="auto"
+          >
+            Sign in
+          </Button>
         </FormControl>
         <Text color="white" mt={2}>
           Don't have an account yet?{" "}

@@ -1,19 +1,24 @@
-import React from "react";
-import MyProfileCard from "../components/basic-components/profile-card";
 import { Box, Card } from "@chakra-ui/react";
-import TabItemFollow from "../components/tab-item-follow";
-import { useTabItemContext } from "../hook/use-context-followers";
-import ListFollower from "../components/list-components/list-follower";
-import ListFollowing from "../components/list-components/list-following";
-import listProfile from "../data/profile";
+import TabItemFollow from "../../../components/tab-item-follow";
+import { useTabItemContext } from "../../../hook/use-context-followers";
+import useGetProfile from "../hooks/use-get-profil";
+import ProfileCard from "../components/profile-card2";
+import ListFriendCard from "../../friend-card/components/list-friend-common";
+import useGetFollower from "../hooks/use-get-follower";
+import useGetFollowing from "../hooks/use-get-following";
+
 
 export default function ProfilePage() {
+  const { UserProfile } = useGetProfile();
   const { isFollowerClick } = useTabItemContext();
+  const {follower} = useGetFollower()
+  const {following} = useGetFollowing()
+
 
   return (
     <Box width={"100%"} p={0} bg={"none"} height={"100vh"}>
       <Box bg={"brand.primary"}>
-        <MyProfileCard profile={listProfile[0]} bgColor="brand.primary" />
+     <ProfileCard user={UserProfile}/>
         <Box position="relative" bottom={2}>
           <TabItemFollow />
         </Box>
@@ -37,7 +42,7 @@ export default function ProfilePage() {
           },
         }}
       >
-        <Box as={isFollowerClick ? ListFollower : ListFollowing} />
+        {isFollowerClick ? <ListFriendCard users={follower}/> : <ListFriendCard users={following}/>}
 
         {/* Tambahkan PostItem lagi sesuai kebutuhan */}
       </Card>

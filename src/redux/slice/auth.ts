@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface User {
+  id:number;
   name: string;
   username: string;
   quote?: string;
@@ -16,6 +17,7 @@ export interface AuthState {
 
 const initialState: AuthState = {
   user: {
+    id:0,
     username: "",
     name: "",
     quote: "",

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState,ReactNode } from "react";
 
 // Definisikan tipe data untuk konteks
 interface TabItemContextType {
@@ -21,7 +21,7 @@ export const useTabItemContext = (): TabItemContextType => {
 };
 
 // Buat provider yang menyediakan nilai untuk konteks
-export const TabFollowProvider: React.FC = ({ children }) => {
+export const TabFollowProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [isFollowingClick, setIsFollowingClick] = useState<boolean>(false);
   const [isFollowerClick, setIsFollowerClick] = useState<boolean>(true);
 

@@ -19,7 +19,7 @@ import {
 } from "@chakra-ui/react";
 import { ButtonEffect1 } from "../assets/hover-effets";
 
-function editProfil() {
+function EditProfil() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const initialRef = React.useRef(null);
@@ -103,4 +103,4 @@ function editProfil() {
   );
 }
 
-export default editProfil;
+export default EditProfil;

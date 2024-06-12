@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, ReactNode, useContext, useState } from "react";
 
 // Definisikan tipe data untuk konteks
 interface LoginContextType {
@@ -25,7 +25,7 @@ export const useLoginContext = (): LoginContextType => {
 };
 
 // Buat provider yang menyediakan nilai untuk konteks
-export const LoginProvider: React.FC = ({ children }) => {
+export const LoginProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [isLogin, setIsLogin] = useState<boolean>(false);
 
   return (

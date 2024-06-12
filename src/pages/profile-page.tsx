@@ -1,8 +1,8 @@
 import React from "react";
-import MyProfileCard from "../components/basic-components/profile-card";
+import MyProfileCard from "../features/follow/components/profile-card";
 import { Box, Card } from "@chakra-ui/react";
 import TabItemProfil from "../components/tab-item-profil";
-import ListPostItem from "../components/list-components/list-post-item";
+import ListPostItem from "../features/home/components/list-post-item";
 import ListMedia from "../components/list-components/list-media";
 import { useTabItemContext } from "../hook/use-context-tab-item";
 import listProfile from "../data/profile";

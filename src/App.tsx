@@ -1,20 +1,19 @@
 // src/App.js or src/App.tsx
 import React, { useEffect, useState } from "react";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "./redux/store/store";
+import { useDispatch } from "react-redux";
 import { SET_USER } from "./redux/slice/auth";
 import { api } from "./services/api";
 
-import Home from "./pages/home-page";
+import Home from "./features/home/main-page/home-page";
 import DetilStatusPage from "./pages/detil-status-page";
 import LoginPage from "./pages/sign-page/login-page";
 import RegisterPage from "./pages/sign-page/register-page";
-import MainLayout from "./pages/main-layout";
+import MainLayout from "./features/main-layout/main-layout";
 import ProfilePage from "./pages/profile-page";
-import SearchPage from "./pages/search-page";
-import FollowerPage from "./pages/follower-page";
-import HomePage from "./pages/home-page";
+import SearchPage from "./features/search/main-page/search-page";
+import FollowerPage from "./features/follow/main-page/follow-page";
+import HomePage from "./features/home/main-page/home-page";
 import TabItemProfil from "./components/tab-item-profil";
 import ListMedia from "./components/list-components/list-media";
 import EditProfil from "./components/edit-profil-modal";
@@ -25,7 +24,6 @@ import { useLoginContext } from "./hook/use-context-login";
 
 function App() {
   const navigate = useNavigate();
-  const user = useSelector((state: RootState) => state.auth.user);
   const dispatch = useDispatch();
   const {isLogin, setIsLogin} = useLoginContext();
   const [isLoading, setIsLoading] = useState<boolean>(true);
