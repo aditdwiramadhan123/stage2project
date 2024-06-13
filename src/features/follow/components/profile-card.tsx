@@ -7,7 +7,6 @@ import {
   Text,
   Flex,
 } from "@chakra-ui/react";
-import { ButtonEffect1 } from "../../../assets/hover-effets";
 import EditProfil from "../../../components/edit-profil-modal";
 import { profileType } from "../../../data/profile";
 
@@ -44,7 +43,7 @@ function MyProfileCard({bgColor,profile}:{bgColor?:string,profile:profileType}) 
           size="lg"
           border="solid #2C3A47 3px"
           name= {profile.name}
-          src={profile.imageProfilLink}
+          src={profile.imageProfilLink||'default.jpg'}
           position={"relative"}
           left={3}
           p={0}

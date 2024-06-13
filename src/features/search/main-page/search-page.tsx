@@ -7,6 +7,7 @@ import NoResultSearch from "../components/no-result-search";
 
 export default function SearchPage() {
   const {handleSubmitChange,users,searchDebounce} = useSearch ()
+  console.log("ini user dari search page",users)
   return (
     <Box>
       <SearchInput handleSubmitChange={handleSubmitChange}

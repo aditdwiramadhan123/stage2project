@@ -1,14 +1,10 @@
 import { useState, useEffect } from "react";
 import { useDebounce } from "use-debounce";
 import { api } from "../../../services/api";
-import { useMutation } from "@tanstack/react-query";
+import {  useQuery} from "@tanstack/react-query";
+import { FriendCardType } from "../../type";
 
-interface FriendCard {
-  name: string;
-  profilePictureUrl: null | string;
-  username: string;
-  isFollow: boolean;
-}
+
 
 export default function useSearch() {
   const [search, setSearch] = useState<string>("");
@@ -17,7 +13,7 @@ export default function useSearch() {
     setSearch(e.target.value);
   };
 
-  const [users, setUsers] = useState<FriendCard[] | null>(null);
+  const [users, setUsers] = useState<FriendCardType[] | undefined>(undefined);
 
   async function getPerson() {
     const token = localStorage.getItem("token");
@@ -31,13 +27,17 @@ export default function useSearch() {
       setUsers(response.data);
     }
   }
-  const { mutate } = useMutation({ mutationFn: getPerson });
+  // const { mutate } = useMutation({ mutationFn: getPerson });
+  // const { data: threadsByName, refetch: refetchThreadByName } = useQuery({
+  //   queryKey: ["person"],
+  //   queryFn: getPerson,
+  // });
 
   useEffect(() => {
-    mutate();
-  }, [searchDebounce,mutate]);
+    getPerson();
+  }, [searchDebounce]);
 
   
 
-  return { getPerson, handleSubmitChange, users,searchDebounce };
+  return { handleSubmitChange, users,searchDebounce };
 }

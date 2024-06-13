@@ -31,3 +31,4 @@ export interface ThreadTypeFromDB {
   likesData: UserType
   commentsData:UserType
 }
+

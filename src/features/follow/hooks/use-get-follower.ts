@@ -21,14 +21,14 @@ const useGetFollower = () => {
     }
   }
 
-  const { data: follower, refetch } = useQuery({
+  const { data: follower, refetch: refetchGetFollower } = useQuery({
     queryKey: ["follower"],
     queryFn: getFollower,
   });
 
  
 
-  return { follower, refetch };
+  return { follower, refetchGetFollower };
 };
 
 export default useGetFollower;

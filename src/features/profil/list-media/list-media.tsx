@@ -1,14 +1,15 @@
 import React from "react";
 import { Box, Grid, Image } from "@chakra-ui/react";
-import listImage from "../../data/image";
+// import listImage from "../../../data/image";
+import { ThreadTypeFromDB } from "../../thread/types/get-thread-types";
 
 
 
-const ListMedia: React.FC = () => {
+function ListMedia({mediaDB}:{mediaDB:ThreadTypeFromDB[]|undefined}) {
   return (
     <Box p={4}>
       <Grid templateColumns="repeat(3, 1fr)" gap={1} bg={"none"}>
-        {listImage.map((image, index) => (
+        {mediaDB?.map((media, index) => (
           <Box
             key={index}
             bg="none"
@@ -23,7 +24,7 @@ const ListMedia: React.FC = () => {
             }}
           >
             <Image
-              src={image.image}
+              src={media.threadData.imageUrl||"default.jpg"}
               alt={`Gambar ${index + 1}`}
               objectFit="cover"
               width="100%"

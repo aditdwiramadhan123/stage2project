@@ -1,9 +1,11 @@
-import PostThread from "../components/input-thread";
+import PostThread from "../../thread/components/input-thread";
 import { Card, Text, Grid, Box } from "@chakra-ui/react";
-import ListPostItem from "../components/list-post-item";
+import ListPostItem from "../../thread/components/list-post-item";
+import useGetThreads from "../../thread/hooks/use-get-thread";
 
 
 function HomePage() {
+  const {threads} = useGetThreads()
 
   return (
     <Grid templateRows="auto 1fr" height="100vh">
@@ -33,7 +35,7 @@ function HomePage() {
         }}
       >
         <PostThread/>
-        <ListPostItem />
+        <ListPostItem threadsDB={threads} />
         {/* Tambahkan PostItem lagi sesuai kebutuhan */}
       </Card>
     </Grid>

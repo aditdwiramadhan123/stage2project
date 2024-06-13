@@ -1,7 +1,7 @@
 import UseLikePost from "../hooks/use-like-hook";
 import { api } from "../../../services/api";
 import { useMutation } from "@tanstack/react-query";
-import useGetThreads from "../../home/hook/use-get-thread";
+import useGetThreads from "../../thread/hooks/use-get-thread";
 
 export default function PostLike ({isLikeParams,route}:{isLikeParams:boolean,route:string}) {
     const { isLike, changeStatus } = UseLikePost(isLikeParams);

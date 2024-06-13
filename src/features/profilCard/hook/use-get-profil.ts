@@ -1,13 +1,9 @@
 import { api } from "../../../services/api";
 import { useQuery } from "@tanstack/react-query";
 import { UserType } from "../../type";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../redux/store/store";
 
-const useGetProfile = () => {
-  const user = useSelector((state: RootState) => state.auth.user);
-  const username = user.username;
-  console.log("ini user loh", user)
+
+const useGetProfile = (username:string) => {
 
   async function getProfile() {
     const token = localStorage.getItem("token");

@@ -1,24 +1,27 @@
 import { Box, Card } from "@chakra-ui/react";
 import TabItemFollow from "../../../components/tab-item-follow";
 import { useTabItemContext } from "../../../hook/use-context-followers";
-import useGetProfile from "../hooks/use-get-profil";
-import ProfileCard from "../components/profile-card2";
+import useGetProfile from "../../profilCard/hook/use-get-profil";
+import ProfileCard from "../../profilCard/components/profile-card2";
 import ListFriendCard from "../../friend-card/components/list-friend-common";
 import useGetFollower from "../hooks/use-get-follower";
 import useGetFollowing from "../hooks/use-get-following";
-
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/store/store";
 
 export default function ProfilePage() {
-  const { UserProfile } = useGetProfile();
+  const user = useSelector((state: RootState) => state.auth.user);
+  const username = user.username;
+  const { UserProfile } = useGetProfile(username);
   const { isFollowerClick } = useTabItemContext();
-  const {follower} = useGetFollower()
-  const {following} = useGetFollowing()
-
+  const { follower } = useGetFollower();
+  const { following } = useGetFollowing();
+ 
 
   return (
     <Box width={"100%"} p={0} bg={"none"} height={"100vh"}>
       <Box bg={"brand.primary"}>
-     <ProfileCard user={UserProfile}/>
+        <ProfileCard user={UserProfile} />
         <Box position="relative" bottom={2}>
           <TabItemFollow />
         </Box>
@@ -42,7 +45,11 @@ export default function ProfilePage() {
           },
         }}
       >
-        {isFollowerClick ? <ListFriendCard users={follower}/> : <ListFriendCard users={following}/>}
+        {isFollowerClick ? (
+          <ListFriendCard users={follower} />
+        ) : (
+          <ListFriendCard users={following} />
+        )}
 
         {/* Tambahkan PostItem lagi sesuai kebutuhan */}
       </Card>

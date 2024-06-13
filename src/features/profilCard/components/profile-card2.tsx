@@ -4,8 +4,8 @@ import EditProfil from "../../../components/edit-profil-modal";
 import { UserType } from "../../type";
 
 function ProfileCard({ user }: { user: UserType|undefined }) {
-  if (!user || (user._count.following === 0 && user._count.followers === 0)) {
-    return <div></div>;
+  if (!user) {
+    return <div>data kosong</div>;
   }
   return (
     <Card

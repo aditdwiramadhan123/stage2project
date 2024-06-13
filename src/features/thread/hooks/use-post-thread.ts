@@ -2,7 +2,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { api } from "../../../services/api";
 import { zodResolver } from "@hookform/resolvers/zod";
-import ThreadSchema from "../validators/post-thread";
+import ThreadSchema from "../../home/validators/post-thread";
 import ThreadForm from "../types/post-thread-types";
 import useGetThreads from "./use-get-thread";
 

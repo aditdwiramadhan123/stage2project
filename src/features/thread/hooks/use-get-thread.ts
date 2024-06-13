@@ -20,6 +20,7 @@ const useGetThreads = () => {
     }
   }
 
+  refetch()
   return {threads,refetch};
 };
 

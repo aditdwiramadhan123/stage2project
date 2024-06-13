@@ -2,6 +2,7 @@ import { Card, Avatar, Box, Text, Button, Flex, Link } from "@chakra-ui/react";
 import { ButtonEffect1 } from "../../../assets/hover-effets";
 import { LinkEffect } from "../../../assets/hover-effets";
 import useFollow from "../hook/use-post-follow";
+import useFollowFriend from "../../../hook/use-folllow-friend";
 
 interface FriendCard {
   id:number,
@@ -11,7 +12,13 @@ interface FriendCard {
   isFollow: boolean;
 }
 function FriendCard({friend}:{friend:FriendCard}) {
-    const {handleClick,isFollow} = useFollow({followingId:friend.id,isFollowParams:friend.isFollow})
+    const {handleClick} = useFollow({followingId:friend.id})
+    const {isFollow,changeStatus} = useFollowFriend(friend.isFollow)
+
+    const buttonHandleClick = ()=>{
+      handleClick();
+      changeStatus()
+    }
 
     return (
       <Card p={2} color="white" borderRadius={0} bg={"none"}>
@@ -37,10 +44,10 @@ function FriendCard({friend}:{friend:FriendCard}) {
             fontSize="xs"
             height="24px"
             color={"white"}
-            onClick={handleClick}
+            onClick={buttonHandleClick}
             sx={ButtonEffect1}
           >
-            {isFollow ? "following" : "follow"}
+            {isFollow?"following":"follow"}
           </Button>
         </Flex>
       </Card>

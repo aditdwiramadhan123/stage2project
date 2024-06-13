@@ -7,7 +7,7 @@ import {
   CardHeader,
   FormControl,
 } from "@chakra-ui/react";
-import usePostThread from "../hook/use-post-thread";
+import usePostThread from "../hooks/use-post-thread";
 
 function PostThread() {
   const { handleSubmit, onSubmit, register } = usePostThread();
