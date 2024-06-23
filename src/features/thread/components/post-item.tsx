@@ -33,7 +33,11 @@ function PostItem({ post }: { post: ThreadType }) {
           >
             <HamburgerMenu threadId={post.id} />
           </Box>
-          <Avatar name={post.name} size={"sm"} />
+          <Avatar
+            name={post.name}
+            src={post.profilePictureUrl || ""}
+            size={"sm"}
+          />
           <Box>
             <Heading
               fontSize={12}

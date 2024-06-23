@@ -44,8 +44,8 @@ function CommentItem({ comment }: { comment: CommentType }) {
           </Box>
 
           <Avatar
-            name="Segun Adebayo"
-            src="https://bit.ly/sage-adebayo"
+            name={comment.name}
+            src={comment.profilePictureUrl||""}
             color="white"
             size={"sm"}
           />

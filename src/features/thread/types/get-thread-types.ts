@@ -19,6 +19,7 @@ export interface ThreadType extends UserType {
   id: number;
   caption: string;
   imageUrl: string | null;
+  profilePictureUrl: string | null;
   duration: string;
   comments: number;
   likes: number;
