@@ -2,7 +2,8 @@ import { api } from "../../../services/api";
 import { useQuery } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store/store";
-import { FollowingType } from "../types";
+import { FriendCardType } from "../../type";
+
 
 const useGetFollowing = () => {
   const user = useSelector((state: RootState) => state.auth.user);
@@ -16,7 +17,7 @@ const useGetFollowing = () => {
           Authorization: token,
         },
       });
-      const userProfil: FollowingType[] = response.data;
+      const userProfil: FriendCardType[] = response.data;
       return userProfil;
     }
   }

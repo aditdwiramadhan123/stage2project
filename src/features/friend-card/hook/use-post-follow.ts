@@ -1,5 +1,4 @@
 import { api } from "../../../services/api";
-import { useMutation } from "@tanstack/react-query";
 
 export default function useFollow({
   followingId
@@ -12,7 +11,7 @@ export default function useFollow({
   const onClick = async () => {
     try {
       const response = await api.post(
-        `http://localhost:3000/api/v1/follow/${followingId}`,
+        `/api/v1/follow/${followingId}`,
         {},
         {
           headers: {

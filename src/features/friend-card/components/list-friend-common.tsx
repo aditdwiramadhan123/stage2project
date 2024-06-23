@@ -1,13 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import FriendCard from "./friend-card";
-
-interface FriendCardType {
-  id:number,
-  name: string;
-  profilePictureUrl: null | string;
-  username: string;
-  isFollow: boolean;
-}
+import { FriendCardType } from "../types";
 
 function ListFriendCard({users}:{users:FriendCardType[]|undefined}) {
   if (!users) {

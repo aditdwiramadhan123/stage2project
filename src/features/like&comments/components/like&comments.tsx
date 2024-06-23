@@ -7,18 +7,29 @@ import PostLike from "../hooks/use-post-like-hook";
 // import { useForm } from "react-hook-form";
 
 export default function LikeAndComment({
+  itemId,
   isLikeParams,
   countLikes,
   countComments,
-  route,
+  cardFor,
 }: {
   isLikeParams: boolean;
   countLikes: number;
-  countComments: number;
-  threadId: number;
-  route:string
+  countComments?: number;
+  itemId: number;
+  cardFor:"comment"|"thread"
 }) {
-  const{isLike,handleClick} = PostLike({isLikeParams,route})
+  const{isLike,handleClick,viewCountLike} = PostLike({countLikes,itemId,isLikeParams,cardFor})
+  
+  let commentLinkDir:string =""
+  if (cardFor=="comment") {
+    commentLinkDir = ""
+  }
+
+  else if (cardFor=="thread") {
+    commentLinkDir = `/status/${itemId}`
+  }
+
 
   return (
     <Box
@@ -68,11 +79,11 @@ export default function LikeAndComment({
           top={0.5}
           right={2}
         >
-          {countLikes}
+          {viewCountLike}
         </Text>
       </Button>
 
-      <Link href="status">
+      <Link href={commentLinkDir}>
         <Button
           colorScheme="gray"
           variant="outline"

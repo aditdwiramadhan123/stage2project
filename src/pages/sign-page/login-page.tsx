@@ -18,7 +18,9 @@ interface LoginForm {
 const loginSchema = z.object({
   email: z
     .string({ message: "Email must be a string" })
-    .email({ message: "Email not valid, please check the format and try again." }),
+    .email({
+      message: "Email not valid, please check the format and try again.",
+    }),
   password: z
     .string({ message: "Password must be a string" })
     .min(6, { message: "Password must be at least 6 characters" }),
@@ -42,13 +44,12 @@ export default function LoginPage() {
   // Handle form submission
   const onSubmit: SubmitHandler<LoginForm> = async (data) => {
     try {
-      const response = await api.post(
-        "http://localhost:3000/api/v1/login",
-        data
-      );
+      const response = await api.post("/api/v1/login", data);
       const token = response.data.token;
       const user = response.data.userDB;
-      if (token) {
+      const isVerified = response.data.userDB.isVerified;
+
+      if (token && isVerified) {
         localStorage.setItem("token", `Bearer ${token}`);
         dispatch(SET_USER(user));
         console.log("Login successful nih:", response.data);
@@ -60,13 +61,14 @@ export default function LoginPage() {
           isClosable: true,
         });
         setIsLogin(true);
-        navigate("/");
+      } else {
+        navigate("/login");
       }
 
       // Handle success (e.g., redirect to another page)
-    } catch (error) {
+    } catch (error:any) {
       console.error("Error logging in:", error);
-      setError("Failed to login. Please check your email and password.");
+      setError(error.response.data.error);
     }
   };
 

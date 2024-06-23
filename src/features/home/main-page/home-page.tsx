@@ -21,6 +21,7 @@ function HomePage() {
         borderRadius={0}
         bg="none"
         overflowY="auto"
+        overflowX={"hidden"}
         css={{
           "&::-webkit-scrollbar": {
             width: "2px", // Lebar scrollbar

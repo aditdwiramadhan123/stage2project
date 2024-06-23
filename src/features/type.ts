@@ -3,12 +3,11 @@ export interface User {
     name: string;
     username: string;
     email: string;
-    password: string;
     quote: string | null;
     profilePictureUrl: string | null;
     coverPictureUrl: string | null;
-    createdAt: string;
-    updatedAt: string;
+    createdAt?: string;
+    updatedAt?: string;
   }
 
   type Follower = {

@@ -8,7 +8,7 @@ const useGetProfile = (username:string) => {
   async function getProfile() {
     const token = localStorage.getItem("token");
     if (token) {
-      const response = await api.get( `http://localhost:3000/api/v1/user?username=${username}`, {
+      const response = await api.get( `/api/v1/user?username=${username}`, {
         headers: {
           Authorization: token,
         },

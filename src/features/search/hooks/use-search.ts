@@ -8,12 +8,11 @@ import { FriendCardType } from "../../type";
 
 export default function useSearch() {
   const [search, setSearch] = useState<string>("");
-  const [searchDebounce] = useDebounce(search, 1000);
+  const [searchDebounce] = useDebounce(search, 400);
   const handleSubmitChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
 
-  const [users, setUsers] = useState<FriendCardType[] | undefined>(undefined);
 
   async function getPerson() {
     const token = localStorage.getItem("token");
@@ -23,21 +22,23 @@ export default function useSearch() {
           Authorization: token,
         },
       });
-      console.log("ini data baru diambil", response.data);
-      setUsers(response.data);
+      const users:FriendCardType[] = response.data
+      console.log("ini")
+
+      return users
     }
   }
   // const { mutate } = useMutation({ mutationFn: getPerson });
-  // const { data: threadsByName, refetch: refetchThreadByName } = useQuery({
-  //   queryKey: ["person"],
-  //   queryFn: getPerson,
-  // });
+  const { data: users, refetch: refetchUsers } = useQuery({
+    queryKey: ["person"],
+    queryFn: getPerson,
+  });
 
   useEffect(() => {
-    getPerson();
+    refetchUsers();
   }, [searchDebounce]);
 
   
 
-  return { handleSubmitChange, users,searchDebounce };
+  return { handleSubmitChange, users,searchDebounce,refetchUsers };
 }

@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ThreadTypeFromDB } from "../types/get-thread-types";
 
 const useGetThreads = () => {
-  const { data: threads, refetch } = useQuery({
+  const { data: threads, refetch: refetchGetThreads } = useQuery({
     queryKey: ["threads"],
     queryFn: getThreads,
   });
@@ -20,8 +20,8 @@ const useGetThreads = () => {
     }
   }
 
-  refetch()
-  return {threads,refetch};
+  refetchGetThreads()
+  return {threads,refetchGetThreads};
 };
 
 export default useGetThreads

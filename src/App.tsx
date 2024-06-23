@@ -6,7 +6,7 @@ import { SET_USER } from "./redux/slice/auth";
 import { api } from "./services/api";
 
 import Home from "./features/home/main-page/home-page";
-import DetilStatusPage from "./pages/detil-status-page";
+import DetilStatusPage from "./features/status-page/main-page/detil-status-page";
 import LoginPage from "./pages/sign-page/login-page";
 import RegisterPage from "./pages/sign-page/register-page";
 import MainLayout from "./features/main-layout/main-layout";
@@ -15,12 +15,12 @@ import SearchPage from "./features/search/main-page/search-page";
 import FollowerPage from "./features/follow/main-page/follow-page";
 import HomePage from "./features/home/main-page/home-page";
 import TabItemProfil from "./components/tab-item-profil";
-import ListMedia from "./features/profil/list-media/list-media";
-import EditProfil from "./components/edit-profil-modal";
+import UserProfilePage from "./features/friend-profile/main-page/profile-page";
 import { TabItemProvider } from "./hook/use-context-tab-item";
 import { TabFollowProvider } from "./hook/use-context-followers";
 import { Box, Spinner } from "@chakra-ui/react";
 import { useLoginContext } from "./hook/use-context-login";
+import EmailSentPage from "./pages/sign-page/email-sent-page ";
 
 function App() {
   const navigate = useNavigate();
@@ -92,12 +92,20 @@ function App() {
         }
       >
         <Route index element={<Home />} />
-        <Route path="status" element={<DetilStatusPage />} />
+        <Route path="status/:threadId" element={<DetilStatusPage />} />
         <Route
           path="profilePage"
           element={
             <TabItemProvider>
               <ProfilePage />
+            </TabItemProvider>
+          }
+        />
+               <Route
+          path="profile/:usernameParams"
+          element={
+            <TabItemProvider>
+              <UserProfilePage />
             </TabItemProvider>
           }
         />
@@ -113,6 +121,7 @@ function App() {
       </Route>
       <Route path="login" element={<LoginPage />} />
       <Route path="register" element={<RegisterPage />} />
+      <Route path="email-sent-page" element={<EmailSentPage />} />
 
       {/* Test elements */}
       <Route
@@ -124,8 +133,6 @@ function App() {
         }
       />
       <Route path="tab2" element={<HomePage />} />
-      <Route path="listMedia" element={<ListMedia />} />
-      <Route path="editProfil" element={<EditProfil />} />
     </Routes>
   );
 }

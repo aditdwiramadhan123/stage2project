@@ -3,15 +3,10 @@ import { ButtonEffect1 } from "../../../assets/hover-effets";
 import { LinkEffect } from "../../../assets/hover-effets";
 import useFollow from "../hook/use-post-follow";
 import useFollowFriend from "../../../hook/use-folllow-friend";
+import { FriendCardType } from "../types";
 
-interface FriendCard {
-  id:number,
-  name: string;
-  profilePictureUrl: null | string;
-  username: string;
-  isFollow: boolean;
-}
-function FriendCard({friend}:{friend:FriendCard}) {
+
+function FriendCard({friend}:{friend:FriendCardType}) {
     const {handleClick} = useFollow({followingId:friend.id})
     const {isFollow,changeStatus} = useFollowFriend(friend.isFollow)
 
@@ -31,7 +26,7 @@ function FriendCard({friend}:{friend:FriendCard}) {
           />
           <Box flex="1">
             <Text fontWeight="bold" fontSize={12} sx={LinkEffect}>
-              <Link href="profilePage">{friend.name}</Link>
+              <Link href={`/profile/${friend.username}`}>{friend.name}</Link>
             </Text>
             <Text fontSize={11} color="gray.300">
               @{friend.username}

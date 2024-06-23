@@ -1,18 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { UserType } from "../../features/type";
 
-export interface User {
-  id:number;
-  name: string;
-  username: string;
-  quote?: string;
-  following: number;
-  follower: number;
-  imageProfilLink?: string | null;
-  coverImageLink?: string | null;
-}
 
 export interface AuthState {
-  user: User;
+  user: UserType;
 }
 
 const initialState: AuthState = {
@@ -21,10 +12,15 @@ const initialState: AuthState = {
     username: "",
     name: "",
     quote: "",
-    following: 0,
-    follower: 0,
-    coverImageLink: "",
-    imageProfilLink: "",
+    email:"",
+    following: [],
+    followers: [],
+    profilePictureUrl: "",
+    coverPictureUrl: "",
+    _count:{
+      followers:0,
+      following:0,
+    }
   },
 };
 
@@ -32,7 +28,7 @@ export const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    SET_USER: (state, action: { payload: User }) => {
+    SET_USER: (state, action: { payload: UserType }) => {
       console.log(action.payload);
       state.user = action.payload;
     },

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, FormControl, Input, Text, Link, Button } from "@chakra-ui/react";
+import { Box, FormControl, Input, Text, Link, Button, } from "@chakra-ui/react";
 import { api } from "../../services/api";
 import { useLoginContext } from "../../hook/use-context-login";
 import { SET_USER } from "../../redux/slice/auth";
@@ -56,13 +56,15 @@ export default function RegisterPage() {
   const onSubmit: SubmitHandler<RegisterForm> = async (data) => {
     try {
       const response = await api.post(
-        "http://localhost:3000/api/v1/register",
+        "/api/v1/register",
         data
       );
+      navigate("/email-sent-page"); // Redirect after successful registration
       const token = response.data.token;
       const user = response.data.userDB;
+      const isVerified = response.data.userDB.isVerified
 
-      if (token) {
+      if (token && isVerified) {
         localStorage.setItem("token", `Bearer ${token}`);
         dispatch(SET_USER(user));
         setIsLogin(true);
@@ -73,7 +75,7 @@ export default function RegisterPage() {
           duration: 9000,
           isClosable: true,
         });
-        navigate("/"); // Redirect after successful registration
+       
       }
     } catch (error) {
       if (axios.isAxiosError(error) && error.response) {

@@ -2,7 +2,7 @@ import { api } from "../../../services/api";
 import { useQuery } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store/store";
-import { FollowerType } from "../types";
+import { FriendCardType } from "../../type";
 
 const useGetFollower = () => {
   const user = useSelector((state: RootState) => state.auth.user);
@@ -11,12 +11,12 @@ const useGetFollower = () => {
   async function getFollower() {
     const token = localStorage.getItem("token");
     if (token) {
-      const response = await api.get( `http://localhost:3000/api/v1/getFollower/${userId}`, {
+      const response = await api.get(`/api/v1/getFollower/${userId}`, {
         headers: {
           Authorization: token,
         },
       });
-      const userProfil: FollowerType[] = response.data;
+      const userProfil: FriendCardType[] = response.data;
       return userProfil;
     }
   }

@@ -1,12 +1,21 @@
 import UseLikePost from "../hooks/use-like-hook";
 import { api } from "../../../services/api";
 import { useMutation } from "@tanstack/react-query";
-import useGetThreads from "../../thread/hooks/use-get-thread";
 
-export default function PostLike ({isLikeParams,route}:{isLikeParams:boolean,route:string}) {
-    const { isLike, changeStatus } = UseLikePost(isLikeParams);
+
+export default function PostLike ({countLikes,itemId,isLikeParams,cardFor}:{countLikes:number,itemId:number,isLikeParams:boolean,cardFor:"comment"|"thread"}) {
+    const { isLike, changeStatus,viewCountLike } = UseLikePost(isLikeParams,countLikes);
     const token = localStorage.getItem("token");
-    const {refetch} =useGetThreads()
+    let route: string;
+
+    if (cardFor=="comment") {
+      route = `/api/v1/like-comment/${itemId}`
+    }
+
+    else if (cardFor=="thread") {
+      route = `/api/v1/like/${itemId}`
+
+    }
   
     const likeClick = async () => {
       try {
@@ -21,8 +30,7 @@ export default function PostLike ({isLikeParams,route}:{isLikeParams:boolean,rou
           }
         );
   
-        console.log(response);
-        return Response
+        return response
       } catch (error) {
         console.error;
         return error
@@ -35,8 +43,7 @@ export default function PostLike ({isLikeParams,route}:{isLikeParams:boolean,rou
     const handleClick = async () => {
       changeStatus();
       await mutateAsync();
-      refetch()
     };
 
-    return {handleClick,isLike}
+    return {handleClick,isLike,viewCountLike}
 }
