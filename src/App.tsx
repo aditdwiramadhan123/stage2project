@@ -1,5 +1,5 @@
 // src/App.js or src/App.tsx
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { SET_USER } from "./redux/slice/auth";

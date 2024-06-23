@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, Card } from "@chakra-ui/react";
 import TabItemProfil from "../../../components/tab-item-profil";
 import ListPostItem from "../../thread/components/list-post-item";

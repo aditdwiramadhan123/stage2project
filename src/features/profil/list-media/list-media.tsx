@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, Grid, Image } from "@chakra-ui/react";
 // import listImage from "../../../data/image";
 import { ThreadTypeFromDB } from "../../thread/types/get-thread-types";

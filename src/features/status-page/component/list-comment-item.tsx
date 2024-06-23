@@ -1,4 +1,3 @@
-import React from "react";
 import { Box } from "@chakra-ui/react";
 import CommentItem from "./comment-items";
 import { CommentType,CommentTypeFromDB } from "../../thread/types/get-comment-types";

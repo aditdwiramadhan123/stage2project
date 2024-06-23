@@ -1,6 +1,4 @@
-import React from "react";
-import { Box, Text } from "@chakra-ui/react";
-import FriendCard from "../basic-components/friend-card";
+import { Box } from "@chakra-ui/react";
 import ListFriendCard from "../../features/friend-card/components/list-friend";
 
 function ListFollowing() {

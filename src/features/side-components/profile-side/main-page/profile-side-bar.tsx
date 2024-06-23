@@ -1,4 +1,3 @@
-import React from "react";
 import ListFriendCard from "../../../friend-card/components/list-friend-common";
 import SideProfilCard from "../../../profilCard/components/side-profile-card";
 import { Grid, GridItem, Text, Card, Box } from "@chakra-ui/react";

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Box, FormControl, Input, Text, Link, Button, } from "@chakra-ui/react";
 import { api } from "../../services/api";
 import { useLoginContext } from "../../hook/use-context-login";

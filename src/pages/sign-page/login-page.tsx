@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Box, FormControl, Input, Text, Link, Button } from "@chakra-ui/react";
 import { api } from "../../services/api";
 import { useDispatch } from "react-redux";
@@ -9,6 +8,7 @@ import { useToast } from "@chakra-ui/react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { useState } from "react";
 
 interface LoginForm {
   email: string;

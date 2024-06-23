@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 
 interface TabItemContextType {
   isMediaClick: boolean;
@@ -17,7 +17,11 @@ export const useTabItemContext = (): TabItemContextType => {
   return context;
 };
 
-export const TabItemProvider: React.FC = ({ children }) => {
+interface TabItemProviderProps {
+  children: ReactNode;
+}
+
+export const TabItemProvider: React.FC<TabItemProviderProps> = ({ children }) => {
   const [isMediaClick, setIsMediaClick] = useState<boolean>(false);
   const [isPostClick, setIsPostClick] = useState<boolean>(true);
 
